@@ -1,6 +1,6 @@
-/// </example_four>
-/// This example uses an Extension method to simply the syntax and follow .NET 
-/// convention
+/// </example_five>
+/// This example implements a Custom Conventional Middleware Class using
+/// the Middleware Class template
 ///
 using MiddlewareEx.Middleware;
 
@@ -20,13 +20,46 @@ app.Use(async (HttpContext context, RequestDelegate next) =>
 // middleware 2
 app.UseMiddlewareTwo();
 
+app.UseHelloCustomMiddleware();
+
 // middleware 3
 app.Run(async (HttpContext context) =>
 {
     await context.Response.WriteAsync("Hello from middleware 3.\n");
 });
 ///
-/// </example_four>
+/// </example_five>
+
+
+///// </example_four>
+///// This example uses an Extension method to simply the syntax and follow .NET 
+///// convention
+/////
+//using MiddlewareEx.Middleware;
+
+//var builder = WebApplication.CreateBuilder(args);
+
+//builder.Services.AddTransient<MiddlewareTwo>();
+
+//var app = builder.Build();
+
+//// middleware 1
+//app.Use(async (HttpContext context, RequestDelegate next) =>
+//{
+//    await context.Response.WriteAsync("Hello from Middleware 1.\n");
+//    await next(context);
+//});
+
+//// middleware 2
+//app.UseMiddlewareTwo();
+
+//// middleware 3
+//app.Run(async (HttpContext context) =>
+//{
+//    await context.Response.WriteAsync("Hello from middleware 3.\n");
+//});
+/////
+///// </example_four>
 
 
 ///// </example_three>
